@@ -1,0 +1,55 @@
+{
+    "count": 12,
+    "post": [
+        {
+            "photo": "assets/images/categories.png",
+            "name": "Categories"
+        },
+        {
+            "photo": "assets/images/men.png",
+            "name": "MEN"
+        },
+        {
+            "photo": "assets/images/women.png",
+            "name": "WOMEN"
+        },
+        {
+            "photo": "assets/images/kids.png",
+            "name": "KIDS"
+        },
+        {
+            "photo": "assets/images/footwear.png",
+            "name": "FOOTWEAR"
+        },
+        {
+            "photo": "assets/images/beauty.png",
+            "name": "BEAUTY"
+        },
+        {
+            "photo": "assets/images/accessories.png",
+            "name": "ACCESSORIES"
+        },
+        {
+            "photo": "assets/images/home.png",
+            "name": "HOME"
+        },
+        {
+            "photo": "assets/images/jwellery.png",
+            "name": "JWELLERY"
+        },
+        {
+            "photo": "assets/images/hot trends.png",
+            "name": "HOT TRENDS"
+        },
+        {
+            "photo": "assets/images/studio.png",
+            "name": "STUDIO"
+        },
+        {
+            "photo": "assets/images/gift card.png",
+            "name": "GIFT CARD"
+        }
+       
+    
+    ]
+}

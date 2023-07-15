@@ -96,7 +96,7 @@ class _MyntraUiState extends State<MyntraUi> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 10,
+                        height: 15,
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.125,

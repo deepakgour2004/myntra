@@ -83,7 +83,7 @@ class _MyntraUiState extends State<MyntraUi> {
               ),
               Icon(
                 Icons.shopping_bag_outlined,
-                color: Colors.black,
+                color: Colors.black.withOpacity(0.6),
               ),
             ],
           ),

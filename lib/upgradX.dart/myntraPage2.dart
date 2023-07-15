@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:myntra/upgradX.dart/myntraPage1.dart';
+import 'package:myntra/widget/common_widget1.dart';
 
 class MyntraUi1 extends StatefulWidget {
   const MyntraUi1({super.key});
@@ -27,9 +29,17 @@ class _MyntraUi1State extends State<MyntraUi1> {
           ),
           title: Row(
             children: [
-              Text(
-                "Myntra",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyntraUi()),
+                  );
+                },
+                child: Text(
+                  "Myntra",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
               Spacer(),
               Icon(
@@ -504,66 +514,11 @@ class _MyntraUi1State extends State<MyntraUi1> {
               ),
               CarouselSlider(
                 items: [
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black87,
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Image.asset(
-                      'assets/images/c1.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black87,
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Image.asset(
-                      'assets/images/c2.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black87,
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Image.asset(
-                      'assets/images/c3.jpg',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black87,
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Image.asset(
-                      'assets/images/c3.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black87,
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Image.asset(
-                      'assets/images/c4.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                  myntraWidget1(context, 'assets/images/c3.png'),
+                  myntraWidget2(context, 'assets/images/c2.png'),
+                  myntraWidget3(context, 'assets/images/c4.png'),
+                  myntraWidget4(context, 'assets/images/c5.png'),
+                  myntraWidget5(context, 'assets/images/c1.png'),
                 ],
                 options: CarouselOptions(
                   reverse: false,

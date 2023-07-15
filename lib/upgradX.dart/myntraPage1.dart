@@ -1,11 +1,14 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:myntra/upgradX.dart/myntraPage2.dart';
 import 'package:myntra/upgradX.dart/myntra_page.dart';
+import 'package:myntra/widget/common_widget2.dart';
+import '../widget/common_widget.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 
 class MyntraUi extends StatefulWidget {
   const MyntraUi({super.key});
@@ -21,9 +24,6 @@ class _MyntraUiState extends State<MyntraUi> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // setState(() {
-    //   loading = true;
-    // });
 
     readjsonmyntra().whenComplete(() {
       setState(() {
@@ -42,6 +42,8 @@ class _MyntraUiState extends State<MyntraUi> {
     print(myntrajson);
   }
 
+  int currentIndex = 0;
+  int _currentstate = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,12 +61,20 @@ class _MyntraUiState extends State<MyntraUi> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: 35,
-                width: 35,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/myntra.webp"))),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyntraUi1()),
+                  );
+                },
+                child: Container(
+                  height: 35,
+                  width: 35,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/myntra.webp"))),
+                ),
               ),
               Spacer(),
               Icon(
@@ -118,206 +128,6 @@ class _MyntraUiState extends State<MyntraUi> {
                               );
                             }),
                       ),
-                      // Expanded(
-                      //   child: ListView(
-                      //     shrinkWrap: true,
-                      //     padding: EdgeInsets.all(15),
-                      //     scrollDirection: Axis.horizontal,
-                      //     children: [
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/categories.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("Categories"),
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 image: DecorationImage(
-                      //                     fit: BoxFit.fill,
-                      //                     image: AssetImage("assets/images/men.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("MEN"),
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image:
-                      //                         AssetImage("assets/images/women.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("WOMEN")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image:
-                      //                         AssetImage("assets/images/kids.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("KIDS")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/footwear.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("FOOTWEAR")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image:
-                      //                         AssetImage("assets/images/beauty.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("BEAUTY")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/accessories.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("ACCESSORIES")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image:
-                      //                         AssetImage("assets/images/home.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("HOME")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/jwellery.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("JWELLERY")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/hot trends.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("HOT TRENDS")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image:
-                      //                         AssetImage("assets/images/studio.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("STUDIO")
-                      //         ],
-                      //       ),
-                      //       Column(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 70,
-                      //             decoration: BoxDecoration(
-                      //                 color: Color.fromARGB(255, 228, 214, 214),
-                      //                 image: DecorationImage(
-                      //                     image: AssetImage(
-                      //                         "assets/images/gift card.png")),
-                      //                 border: Border.all(color: Colors.black),
-                      //                 shape: BoxShape.circle),
-                      //           ),
-                      //           Text("GIFT CARD")
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-
                       Container(
                         height: 100,
                         width: MediaQuery.of(context).size.width,
@@ -352,97 +162,22 @@ class _MyntraUiState extends State<MyntraUi> {
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       CarouselSlider(
                         items: [
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c1.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c2.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c3.jpg',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c3.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c4.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c5.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Container(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.black87,
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Image.asset(
-                              'assets/images/c6.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          carouselWidget1(context, 'assets/images/c1.png'),
+                          carouselWidget2(context, 'assets/images/c2.png'),
+                          carouselWidget3(context, 'assets/images/c3.jpg'),
+                          carouselWidget4(context, 'assets/images/c3.png'),
+                          carouselWidget5(context, 'assets/images/c4.png'),
+                          carouselWidget6(context, 'assets/images/c5.png'),
+                          carouselWidget7(context, 'assets/images/c6.png'),
                         ],
                         options: CarouselOptions(
-                          reverse: true,
+                          padEnds: true,
+                          animateToClosest: true,
+                          reverse: false,
                           initialPage: 7,
                           height: 230.0,
                           enlargeCenterPage: false,
@@ -452,6 +187,18 @@ class _MyntraUiState extends State<MyntraUi> {
                           enableInfiniteScroll: true,
                           autoPlayAnimationDuration: Duration(seconds: 1),
                           viewportFraction: 0.9,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              currentIndex = index;
+                            });
+                          },
+                        ),
+                      ),
+                      Container(
+                        height: 19,
+                        child: DotsIndicator(
+                          dotsCount: 7,
+                          position: currentIndex.toInt(),
                         ),
                       ),
                       SizedBox(
@@ -542,6 +289,38 @@ class _MyntraUiState extends State<MyntraUi> {
                       SizedBox(
                         height: 10,
                       ),
+                      CarouselSlider(
+                        items: [
+                          axisWidget(context,
+                              'assets/images/Myntra-Cashback-Offers.png'),
+                          axisWidget1(context,
+                              'assets/images/myntracredit-cardoffer.png')
+                        ],
+                        options: CarouselOptions(
+                          reverse: false,
+                          initialPage: 2,
+                          height: 40.0,
+                          enlargeCenterPage: false,
+                          autoPlay: false,
+                          aspectRatio: 16 / 9,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration: Duration(seconds: 1),
+                          viewportFraction: 0.9,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _currentstate = index;
+                            });
+                          },
+                        ),
+                      ),
+                      Container(
+                        height: 17,
+                        child: DotsIndicator(
+                          dotsCount: 2,
+                          position: _currentstate.toInt(),
+                        ),
+                      ),
                       Text(
                         "ALL-TIME FAVOURITES",
                         style: TextStyle(
@@ -550,8 +329,9 @@ class _MyntraUiState extends State<MyntraUi> {
                             fontSize: 30),
                       ),
                       SizedBox(
-                        height: 85,
-                      )
+                        height: 10,
+                      ),
+                    
                     ],
                   ),
                 ),

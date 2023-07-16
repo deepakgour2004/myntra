@@ -44,6 +44,16 @@ class _MyntraUiState extends State<MyntraUi> {
 
   int currentIndex = 0;
   int _currentstate = 0;
+
+  List items = [
+    'assets/images/c1.png',
+    'assets/images/c3.png',
+    'assets/images/c4.png',
+    'assets/images/c5.png',
+    'assets/images/c6.png',
+    'assets/images/c3.jpg'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -331,7 +341,29 @@ class _MyntraUiState extends State<MyntraUi> {
                       SizedBox(
                         height: 10,
                       ),
-                    
+                      Expanded(
+                        child: GridView.builder(
+                            scrollDirection: Axis.vertical,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    mainAxisSpacing: 20,
+                                    crossAxisSpacing: 20,
+                                    crossAxisCount: 2),
+                            itemCount: items.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      items[index],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
+                      )
                     ],
                   ),
                 ),

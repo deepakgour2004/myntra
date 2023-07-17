@@ -522,7 +522,7 @@ class _MyntraUi1State extends State<MyntraUi1> {
                 ],
                 options: CarouselOptions(
                   reverse: false,
-                  initialPage: 7,
+                  initialPage: 5,
                   height: 210.0,
                   enlargeCenterPage: false,
                   autoPlay: true,

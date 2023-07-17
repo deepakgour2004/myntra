@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:myntra/upgradX.dart/myntraPage2.dart';
 import 'package:myntra/upgradX.dart/myntra_page.dart';
+import 'package:myntra/widget/common_widget1.dart';
 import 'package:myntra/widget/common_widget2.dart';
 import '../widget/common_widget.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -45,13 +46,13 @@ class _MyntraUiState extends State<MyntraUi> {
   int currentIndex = 0;
   int _currentstate = 0;
 
-  List items = [
-    'assets/images/c1.png',
-    'assets/images/c3.png',
-    'assets/images/c4.png',
-    'assets/images/c5.png',
-    'assets/images/c6.png',
-    'assets/images/c3.jpg'
+  final List<Map<String, dynamic>> items = [
+    {"price": "Under \$1099", "images": "assets/images/tshirt.jpg"},
+    {"price": "Under \$999", "images": "assets/images/boy1.webp"},
+    {"price": "Under \$899", "images": "assets/images/boy2.jpg"},
+    {"price": "Under \$799", "images": "assets/images/girl.jpg"},
+    {"price": "Under \$699", "images": "assets/images/girls1.jpg"},
+    {"price": "Under \$599", "images": "assets/images/jeans.jpg"},
   ];
 
   @override
@@ -164,9 +165,18 @@ class _MyntraUiState extends State<MyntraUi> {
                               "Sign Up For Exciting Deals!",
                               style: TextStyle(color: Colors.white),
                             ),
-                            Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.grey,
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 30,
+                              width: 20,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey, shape: BoxShape.circle),
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                color: Colors.black,
+                              ),
                             )
                           ],
                         ),
@@ -338,11 +348,10 @@ class _MyntraUiState extends State<MyntraUi> {
                             fontWeight: FontWeight.bold,
                             fontSize: 30),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Expanded(
                         child: GridView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.all(15),
                             scrollDirection: Axis.vertical,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
@@ -351,19 +360,91 @@ class _MyntraUiState extends State<MyntraUi> {
                                     crossAxisCount: 2),
                             itemCount: items.length,
                             itemBuilder: (context, index) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      items[index],
+                              return Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                      "${items.elementAt(index)['images']}",
+                                      fit: BoxFit.fill,
+                                      height: 120,
+                                      width: 175,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            "${items.elementAt(index)['price']}")
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               );
                             }),
-                      )
+                      ),
+                      // Container(
+                      //   height: 30,
+                      //   width: MediaQuery.of(context).size.width * .93,
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(8),
+                      //       color: Colors.black),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       Text(
+                      //         "View All",
+                      //         style: TextStyle(color: Colors.white),
+                      //       ),
+                      //       SizedBox(
+                      //         width: 10,
+                      //       ),
+                      //       Container(
+                      //         height: 30,
+                      //         width: 20,
+                      //         decoration: BoxDecoration(
+                      //             color: Colors.grey, shape: BoxShape.circle),
+                      //         child: Icon(
+                      //           Icons.keyboard_arrow_right,
+                      //           color: Colors.black,
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 5,
+                      // ),
+                      // Row(
+                      //   children: [
+                      //     SizedBox(width: 16),
+                      //     Text(
+                      //       "HIGHLIGHTS OF THE DAY",
+                      //       style: TextStyle(
+                      //           color: Colors.black,
+                      //           fontSize: 20,
+                      //           fontWeight: FontWeight.bold),
+                      //     ),
+                      //   ],
+                      // ),
+                      // Container(
+                      //   height: 40,
+                      //   child: Column(
+                      //     children: [
+                      //       Expanded(
+                      //         child: ListView.builder(
+                      //             shrinkWrap: true,
+                      //             itemCount: 3,
+                      //             scrollDirection: Axis.horizontal,
+                      //             itemBuilder: ((context, index) {
+                      //               return myntraWidget6(
+                      //                   context, "assets/images/boy.jpg");
+                      //             })),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

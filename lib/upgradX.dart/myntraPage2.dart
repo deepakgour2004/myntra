@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -13,6 +14,8 @@ class MyntraUi1 extends StatefulWidget {
 }
 
 class _MyntraUi1State extends State<MyntraUi1> {
+  int _screen = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -525,12 +528,24 @@ class _MyntraUi1State extends State<MyntraUi1> {
                   initialPage: 5,
                   height: 210.0,
                   enlargeCenterPage: false,
-                  autoPlay: true,
+                  autoPlay: false,
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
                   autoPlayAnimationDuration: Duration(seconds: 1),
                   viewportFraction: 0.9,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _screen = index;
+                    });
+                  },
+                ),
+              ),
+              Container(
+                height: 17,
+                child: DotsIndicator(
+                  dotsCount: 5,
+                  position: _screen.toInt(),
                 ),
               ),
               SizedBox(

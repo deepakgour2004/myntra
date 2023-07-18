@@ -33,6 +33,12 @@ class _MyntraUiState extends State<MyntraUi> {
     });
   }
 
+  var imageList = [
+    "assets/images/boy1.webp",
+    "assets/images/boy2.jpg",
+    "assets/images/boy.jpg"
+  ];
+
   var myntrajson;
   Future readjsonmyntra() async {
     var response1 = await rootBundle.loadString("assets/json/categorie.json");
@@ -111,342 +117,340 @@ class _MyntraUiState extends State<MyntraUi> {
         ),
         body: loading
             ? Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.125,
-                        child: ListView.builder(
-                            itemCount: myntrajson["count"],
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Row(
-                                children: [
-                                  Myntra_Page(
-                                    myntrajson["post"][index]["photo"],
-                                    myntrajson["post"][index]["name"],
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  )
-                                ],
-                              );
-                            }),
-                      ),
-                      Container(
-                        height: 100,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image:
-                                    AssetImage("assets/images/flat off.png")),
-                            border: Border.all(color: Colors.black)),
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Container(
-                        height: 30,
-                        width: MediaQuery.of(context).size.width * .93,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.black),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Sign Up For Exciting Deals!",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              height: 30,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey, shape: BoxShape.circle),
-                              child: Icon(
-                                Icons.keyboard_arrow_right,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CarouselSlider(
-                        items: [
-                          carouselWidget1(context, 'assets/images/c1.png'),
-                          carouselWidget2(context, 'assets/images/c2.png'),
-                          carouselWidget3(context, 'assets/images/c3.jpg'),
-                          carouselWidget4(context, 'assets/images/c3.png'),
-                          carouselWidget5(context, 'assets/images/c4.png'),
-                          carouselWidget6(context, 'assets/images/c5.png'),
-                          carouselWidget7(context, 'assets/images/c6.png'),
-                        ],
-                        options: CarouselOptions(
-                          padEnds: true,
-                          animateToClosest: true,
-                          reverse: false,
-                          initialPage: 7,
-                          height: 230.0,
-                          enlargeCenterPage: false,
-                          autoPlay: false,
-                          aspectRatio: 16 / 9,
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enableInfiniteScroll: true,
-                          autoPlayAnimationDuration: Duration(seconds: 1),
-                          viewportFraction: 0.9,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              currentIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                      Container(
-                        height: 19,
-                        child: DotsIndicator(
-                          dotsCount: 7,
-                          position: currentIndex.toInt(),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
+            : SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ListView(
+                  children: [
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.125,
+                      child: ListView.builder(
+                          itemCount: myntrajson["count"],
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                Myntra_Page(
+                                  myntrajson["post"][index]["photo"],
+                                  myntrajson["post"][index]["name"],
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                )
+                              ],
+                            );
+                          }),
+                    ),
+                    Container(
+                      height: 100,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage("assets/images/flat off.png")),
+                          border: Border.all(color: Colors.black)),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      height: 30,
+                      width: MediaQuery.of(context).size.width * .93,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.black),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Text(
+                            "Sign Up For Exciting Deals!",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           SizedBox(
                             width: 10,
                           ),
                           Container(
                             height: 30,
-                            width: 110,
+                            width: 20,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: Color.fromARGB(255, 4, 180, 156)),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/certification-badge.png",
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  "100% Original \nProducts",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12),
-                                )
-                              ],
+                                color: Colors.grey, shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black,
                             ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CarouselSlider(
+                      items: [
+                        carouselWidget1(context, 'assets/images/c1.png'),
+                        carouselWidget2(context, 'assets/images/c2.png'),
+                        carouselWidget3(context, 'assets/images/c3.jpg'),
+                        carouselWidget4(context, 'assets/images/c3.png'),
+                        carouselWidget5(context, 'assets/images/c4.png'),
+                        carouselWidget6(context, 'assets/images/c5.png'),
+                        carouselWidget7(context, 'assets/images/c6.png'),
+                      ],
+                      options: CarouselOptions(
+                        padEnds: true,
+                        animateToClosest: true,
+                        reverse: false,
+                        initialPage: 7,
+                        height: 230.0,
+                        enlargeCenterPage: false,
+                        autoPlay: false,
+                        aspectRatio: 16 / 9,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration: Duration(seconds: 1),
+                        viewportFraction: 0.9,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      height: 19,
+                      child: DotsIndicator(
+                        dotsCount: 7,
+                        position: currentIndex.toInt(),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Color.fromARGB(255, 4, 180, 156)),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/certification-badge.png",
+                                color: Colors.white,
+                              ),
+                              Text(
+                                "100% Original \nProducts",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Color.fromARGB(255, 4, 180, 156)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.currency_rupee_rounded,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                "Free Shipping \nOn 1st Order",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Color.fromARGB(255, 4, 180, 156)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.local_shipping,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                "Easy Returns \n& Refunds",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CarouselSlider(
+                      items: [
+                        axisWidget(context,
+                            'assets/images/Myntra-Cashback-Offers.png'),
+                        axisWidget1(
+                            context, 'assets/images/myntracredit-cardoffer.png')
+                      ],
+                      options: CarouselOptions(
+                        reverse: false,
+                        initialPage: 2,
+                        height: 40.0,
+                        enlargeCenterPage: false,
+                        autoPlay: false,
+                        aspectRatio: 16 / 9,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration: Duration(seconds: 1),
+                        viewportFraction: 0.9,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _currentstate = index;
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      height: 17,
+                      child: DotsIndicator(
+                        dotsCount: 2,
+                        position: _currentstate.toInt(),
+                      ),
+                    ),
+                    Row(
+                      children: [SizedBox(width: 20,),
+                        Text(
+                          "ALL-TIME FAVOURITES",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 600,
+                      child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.all(15),
+                          scrollDirection: Axis.vertical,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisSpacing: 20,
+                                  crossAxisSpacing: 20,
+                                  crossAxisCount: 2),
+                          itemCount: items.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    "${items.elementAt(index)['images']}",
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: 175,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(15),
+                                  child: Column(
+                                    children: [
+                                      Text("${items.elementAt(index)['price']}")
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          }),
+                    ),
+                    Container(
+                      height: 30,
+                      width: MediaQuery.of(context).size.width * .93,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.black),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "View All",
+                            style: TextStyle(color: Colors.white),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Container(
                             height: 30,
-                            width: 110,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: Color.fromARGB(255, 4, 180, 156)),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.currency_rupee_rounded,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  "Free Shipping \nOn 1st Order",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
                             width: 20,
-                          ),
-                          Container(
-                            height: 30,
-                            width: 110,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: Color.fromARGB(255, 4, 180, 156)),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.local_shipping,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 3,
-                                ),
-                                Text(
-                                  "Easy Returns \n& Refunds",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12),
-                                )
-                              ],
+                                color: Colors.grey, shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CarouselSlider(
-                        items: [
-                          axisWidget(context,
-                              'assets/images/Myntra-Cashback-Offers.png'),
-                          axisWidget1(context,
-                              'assets/images/myntracredit-cardoffer.png')
-                        ],
-                        options: CarouselOptions(
-                          reverse: false,
-                          initialPage: 2,
-                          height: 40.0,
-                          enlargeCenterPage: false,
-                          autoPlay: false,
-                          aspectRatio: 16 / 9,
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enableInfiniteScroll: true,
-                          autoPlayAnimationDuration: Duration(seconds: 1),
-                          viewportFraction: 0.9,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              _currentstate = index;
-                            });
-                          },
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: 16),
+                        Text(
+                          "HIGHLIGHTS OF THE DAY",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      Container(
-                        height: 17,
-                        child: DotsIndicator(
-                          dotsCount: 2,
-                          position: _currentstate.toInt(),
-                        ),
-                      ),
-                      Text(
-                        "ALL-TIME FAVOURITES",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
-                      ),
-                      Expanded(
-                        child: GridView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.all(15),
-                            scrollDirection: Axis.vertical,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    mainAxisSpacing: 20,
-                                    crossAxisSpacing: 20,
-                                    crossAxisCount: 2),
-                            itemCount: items.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-                                      "${items.elementAt(index)['images']}",
-                                      fit: BoxFit.fill,
-                                      height: 120,
-                                      width: 175,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(15),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            "${items.elementAt(index)['price']}")
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
-                      // Container(
-                      //   height: 30,
-                      //   width: MediaQuery.of(context).size.width * .93,
-                      //   decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(8),
-                      //       color: Colors.black),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Text(
-                      //         "View All",
-                      //         style: TextStyle(color: Colors.white),
-                      //       ),
-                      //       SizedBox(
-                      //         width: 10,
-                      //       ),
-                      //       Container(
-                      //         height: 30,
-                      //         width: 20,
-                      //         decoration: BoxDecoration(
-                      //             color: Colors.grey, shape: BoxShape.circle),
-                      //         child: Icon(
-                      //           Icons.keyboard_arrow_right,
-                      //           color: Colors.black,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: 5,
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     SizedBox(width: 16),
-                      //     Text(
-                      //       "HIGHLIGHTS OF THE DAY",
-                      //       style: TextStyle(
-                      //           color: Colors.black,
-                      //           fontSize: 20,
-                      //           fontWeight: FontWeight.bold),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Container(
-                      //   height: 40,
-                      //   child: Column(
-                      //     children: [
-                      //       Expanded(
-                      //         child: ListView.builder(
-                      //             shrinkWrap: true,
-                      //             itemCount: 3,
-                      //             scrollDirection: Axis.horizontal,
-                      //             itemBuilder: ((context, index) {
-                      //               return myntraWidget6(
-                      //                   context, "assets/images/boy.jpg");
-                      //             })),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    Container(
+                      height: 200,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 3,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: ((context, index) {
+                            return myntraWidget6(context, imageList[index]);
+                          })),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    )
+                  ],
                 ),
               ),
       ),

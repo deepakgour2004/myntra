@@ -346,7 +346,10 @@ class _MyntraUiState extends State<MyntraUi> {
                       ),
                     ),
                     Row(
-                      children: [SizedBox(width: 20,),
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
                         Text(
                           "ALL-TIME FAVOURITES",
                           style: TextStyle(
